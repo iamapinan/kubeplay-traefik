@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  annotations:
+    service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
+  labels:
+    name: wordpress-service
+  namespace: iamapinan
+spec:
+  type: LoadBalancer
+  selector:
+    app: wordpress
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  sessionAffinity: None
