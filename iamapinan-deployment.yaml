@@ -27,3 +27,19 @@ spec:
           value: v4boyomN
         - name: WORDPRESS_DB_NAME
           value: iamapinan
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  labels:
+    name: wordpress-service
+  namespace: iamapinan
+spec:
+  selector:
+    app: wordpress
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
