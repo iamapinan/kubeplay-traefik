@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-deployment
+  namespace: iotech
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+        - name: wordpress
+          image: wordpress:6.1.1
+          ports:
+            - containerPort: 80
+          # env:
+          #   - name: WORDPRESS_DB_HOST
+          #     value: wordpress-mysql
+          #   - name: WORDPRESS_DB_PASSWORD
+          #     value: example
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: nfs-vol
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      volumes:
+        - name: nfs-vol
+          nfs:
+            server: 192.168.145.223
+            path: /var/nfs/iotech
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iotech-service
+  labels:
+    name: iotech-service
+  namespace: iotech
+spec:
+  selector:
+    app: wordpress
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
