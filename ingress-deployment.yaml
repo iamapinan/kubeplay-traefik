@@ -1,43 +1,35 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: http-ingress
-#   namespace: iamapinan
-#   annotations:
-#     kubernetes.io/ingress.class: traefik
-# spec:
-#   rules:
-#   - host: iamapinan.iotech.co.th
-#     http:
-#       paths:
-#       - pathType: Prefix
-#         path: "/"
-#         backend:
-#           service:
-#             name: wordpress-service
-#             port:
-#               number: 80
-#   - host: web.iotech.co.th
-#     http:
-#       paths:
-#       - pathType: Prefix
-#         path: "/"
-#         backend:
-#           service:
-#             name: nginx-service
-#             port:
-#               number: 80
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: traefik-ingress
 spec:
   entryPoints:
+    - web
     - websecure
   routes:
   - match: Host(`web.iotech.co.th`)
     kind: Rule
     services:
     - name: nginx-service
+      port: 80
+  - match: Host(`web.iotech.co.th`)
+    kind: Rule
+    services:
+    - name: nginx-service
+      port: 443
+  # - match: Host(`iamapinan.iotech.co.th`)
+  #   kind: Rule
+  #   services:
+  #   - name: wordpress-service
+  #     port: 80
+
+  - match: Host(`iotech.co.th`) || Host(`www.iotech.co.th`)
+    kind: Rule
+    services:
+    - name: iotech-service
+      port: 443
+  - match: Host(`iotech.co.th`) || Host(`www.iotech.co.th`)
+    kind: Rule
+    services:
+    - name: iotech-service
       port: 80
