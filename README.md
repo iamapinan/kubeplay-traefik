@@ -16,6 +16,6 @@
 
 6. Deploy traefik ingress route  
 `kubectl apply -f ingress-deployment.yaml`
-
-*- Helm install `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`*
+  
+*- Helm install `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`*  
 *- See example in code*
