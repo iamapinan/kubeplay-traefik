@@ -6,7 +6,15 @@
 `kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v2.9/docs/content/reference/dynamic-configuration/kubernetes-crd-rbac.yml`
 
 3. Install traefik helmchart  
-`helm repo add traefik https://traefik.github.io/charts`
+```
+helm repo add traefik https://traefik.github.io/charts
+helm repo update
+helm install traefik traefik/traefik
+
+# Verify service is running
+kubectl get svc -l app.kubernetes.io/name=traefik
+kubectl get po -l app.kubernetes.io/name=traefik
+```
 
 4. Enable traefik dashbaord by  
  `kubectl apply -f traefik-dashboard.yaml`
