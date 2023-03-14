@@ -11,6 +11,7 @@ printf "${YELLOW}Required:\n - helm 3.9 or higher\n - kubectl 1.25 or higher\n -
 printf "${GREEN}Please enter you namespace:${NC} "
 read KUBE_NAMESPACE
 printf ${CLEAR}
+
 printf "${LB}Traefik will install to ${GREEN}$KUBE_NAMESPACE ${LB}namespace.${NC}\n"
 
 kubectl create namespace $KUBE_NAMESPACE
