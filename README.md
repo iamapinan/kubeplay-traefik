@@ -1,4 +1,4 @@
-### Step to install traefik reverse proxy on kubernetes
+## Step to install traefik reverse proxy on kubernetes
 1. Install Traefik Resource Definitions  
 `kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v2.9/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml`
 
