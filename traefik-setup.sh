@@ -15,6 +15,7 @@ printf ${CLEAR}
 printf "${LB}Traefik will install to ${GREEN}$KUBE_NAMESPACE ${LB}namespace.${NC}\n"
 
 kubectl create namespace $KUBE_NAMESPACE
+kubectl config set-context --current --namespace=$KUBE_NAMESPACE
 kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v2.9/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
 kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v2.9/docs/content/reference/dynamic-configuration/kubernetes-crd-rbac.yml
 
