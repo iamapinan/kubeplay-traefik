@@ -1,5 +1,5 @@
 # Easy way Kubernetest and Traefik implement.  
-This repository is an tutorial and tools to implement Traefik proxy on Kubenetes cluster.  
+This repository is a tutorial and tools to implement Traefik proxy on Kubenetes cluster.  
 More information about Traefik Proxy you can read from [here](https://doc.traefik.io/traefik/)  
 ![](https://doc.traefik.io/traefik/assets/img/traefik-architecture.png)  
 

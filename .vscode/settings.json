@@ -1,5 +1,0 @@
-{
-      "yaml.schemas": {
-            "kubernetes://schema/apps/v1%40deployment": "file:///Users/iamapinan/dev/iamapinan/nginx-deployment.yaml"
-      }
-}
