@@ -1,9 +1,9 @@
-# Easy way Kubernetest and Traefik implement.  
-This repository is a tutorial and tools to implement Traefik proxy on Kubenetes cluster.  
+# Easy way Kubernetes and Traefik implement.  
+This repository is a tutorial and tools to implement Traefik proxy on Kubernetes cluster.  
 More information about Traefik Proxy you can read from [here](https://doc.traefik.io/traefik/)  
 ![](https://doc.traefik.io/traefik/assets/img/traefik-architecture.png)  
 
-## Easy way to install traefik to you Kubenetes cluster.
+## Easy way to install traefik to you Kubernetes cluster.
 `Support only MacOS, Linux  `
 ```
 $ curl -O https://raw.githubusercontent.com/iamapinan/kubeplay-nginx-wordpress/main/traefik-setup.sh
