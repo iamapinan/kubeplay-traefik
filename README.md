@@ -27,8 +27,9 @@ $ kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v2.9/docs/c
 $ helm repo add traefik https://traefik.github.io/charts
 $ helm repo update
 $ helm install traefik traefik/traefik
-
-# Verify service is running
+```
+4. Verify service is running
+```
 $ kubectl get svc -l app.kubernetes.io/name=traefik
 $ kubectl get po -l app.kubernetes.io/name=traefik
 ```
@@ -49,13 +50,13 @@ $ kubectl create secret generic -n traefik dashboard-auth-secret \
 This will automatic create a deployment file `dashboard-secret.yaml`  
 Copy users secret from `dashboard-secret.yaml` and replace in `traefik-dashboard.yaml`  
 
-4. Enable traefik dashbaord  
+5. Enable traefik dashbaord  
  `kubectl apply -f traefik-dashboard.yaml`
 
-5. Deploy your nginx  
+6. Deploy your nginx  
  `kubectl apply -f nginx-deployment.yaml`
 
-6. Deploy traefik ingress routes  
+7. Deploy traefik ingress routes  
 `kubectl apply -f ingress-deployment.yaml`
 
 ### To install helm command line.
