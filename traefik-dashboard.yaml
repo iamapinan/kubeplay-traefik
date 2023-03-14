@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: traefik-authen
+  name: traefik-basic-authen
   namespace: iamapinan
 spec:
   basicAuth:
@@ -23,15 +23,15 @@ metadata:
   namespace: iamapinan
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: traefik-authen
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-basic-authen
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`traefik.iotech.co.th`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`traefik.mydomain.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
       middlewares:
-        - name: traefik-authen
+        - name: traefik-basic-authen
           namespace: iamapinan
       services:
         - name: api@internal

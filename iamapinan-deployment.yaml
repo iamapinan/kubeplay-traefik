@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-deployment
+  namespace: iamapinan
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - image: wordpress:latest
+        name: wordpress
+        ports:
+        - containerPort: 80
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: dbx.iotech.co.th
+        - name: WORDPRESS_DB_USER
+          value: root
+        - name: WORDPRESS_DB_PASSWORD
+          value: v4boyomN
+        - name: WORDPRESS_DB_NAME
+          value: iamapinan
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  labels:
+    name: wordpress-service
+  namespace: iamapinan
+spec:
+  selector:
+    app: wordpress
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
