@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: iotech
+  namespace: iamapinan
 spec:
   replicas: 1
   selector:
@@ -25,7 +25,7 @@ metadata:
   name: nginx-service
   labels:
     name: nginx-service
-  namespace: iotech
+  namespace: iamapinan
 spec:
   selector:
     app: nginx
