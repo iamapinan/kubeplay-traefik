@@ -25,5 +25,20 @@ kubectl get po -l app.kubernetes.io/name=traefik
 6. Deploy traefik ingress route  
 `kubectl apply -f ingress-deployment.yaml`
   
-*- Helm install `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`*  
-*- See example in code*
+> - Helm install  
+`curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`
+>- See example in code
+
+### How to create secrete
+```
+htpasswd -nB myuser | tee auth-string
+# New password:
+# Re-type new password:
+# secretuser:$2y$05$W4zCVrqGg8wKtIjOAU.gGu8MQC9k7sH4Wd1v238UfiVuGkf0xfDUu
+
+# Dry run
+kubectl create secret generic -n traefik dashboard-auth-secret \
+--from-file=users=auth-string -o yaml --dry-run=client | tee dashboard-auth-secret.yaml
+
+# Out put show here
+```
