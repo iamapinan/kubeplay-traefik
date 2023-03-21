@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: wordpress
+  namespace: wp
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`iamapinan.iotech.co.th`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: wordpress
+          port: 80
